@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Backbone View </title>
+<script type="text/javascript" src="../assets/js/jquery.js"></script>
+<script type="text/javascript" src="../assets/backbone/underscore.js"></script>
+<script type="text/javascript" src="../assets/backbone/backbone.js"></script>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var HelloView=Backbone.View.extend({
+		tagName:'h1',
+		className:'header',
+		//id:'mainheader',
+		template:_.template("Hello <%= name %> <button class='info'> Info </button> <button class='change'> Change </button>"),
+		initialize:function(options){
+			this.name=options.name;
+			console.log("View initialized");
+			console.log(this.el);
+			this.render();
+		},
+
+		render:function(){
+			this.$el.html(this.template({name:this.name}));
+			$('body').html(this.el);
+		},
+		events:{
+			'click button.info':'showInfo',
+			'click button.change':'changeName'
+		},
+		showInfo:function(){
+			alert("My name is "+this.name);
+			this.$el.css('background-color','#f56');
+		},
+		changeName:function(){
+			this.name=prompt("Enter new name");
+			this.render();
+		}
+
+	});
+
+	var v=new HelloView({name:"Sarath"});
+</script>
+</html>

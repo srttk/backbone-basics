@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Backbone Model</title>
+<script type="text/javascript" src="../assets/js/jquery.js"></script>
+<script type="text/javascript" src="../assets/backbone/underscore.js"></script>
+<script type="text/javascript" src="../assets/backbone/backbone.js"></script>
+</head>
+<body>
+	<h1>Model</h1>
+</body>
+<script type="text/javascript">
+	//Backbone Model
+	var Contact=Backbone.Model.extend({
+		defaults:{
+			name:"Someone",
+			email:'someone@in.com'
+		},
+		initialize:function(){
+			console.log("Model initialized");
+			
+		},
+		//Model Validation
+		validate:function(attributes){
+			if(attributes.name==''){
+				return "Name must not empty";
+			}
+		}
+	});
+
+	//Creating Model instance
+	var c=new Contact();
+</script>
+</html>
