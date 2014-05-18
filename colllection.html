@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script type="text/javascript" src="../assets/js/jquery.js"></script>
+<script type="text/javascript" src="../assets/backbone/underscore.js"></script>
+<script type="text/javascript" src="../assets/backbone/backbone.js"></script>
+</head>
+<body>
+<h1>Collection</h1>
+
+</body>
+<script type="text/javascript">
+	var Contact=Backbone.Model.extend({
+		defaults:{
+			name:"Someone",
+			email:'someone@in.com'
+		},
+		initialize:function(){
+			console.log("Model initialized");
+			
+		}
+	});
+
+	var ContactList=Backbone.Collection.extend({
+		model:Contact,
+		initialize:function(){
+			console.log("Collection initialized");
+		}
+	});
+
+	var contacts=new ContactList([{name:"Jeffrey",'email':'jeff@in.com'},{name:'Taylor',email:'taylor@in.com'}]);
+</script>
+</html>

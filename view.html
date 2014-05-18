@@ -36,7 +36,10 @@
 		},
 		changeName:function(){
 			this.name=prompt("Enter new name");
-			this.render();
+			if(this.name){
+			this.render();	
+			}
+			
 		}
 
 	});
