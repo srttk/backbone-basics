@@ -10,8 +10,56 @@
 
 </body>
 <script type="text/javascript">
-(function(){
-		alert('Hello');
+$(function(){
+		
+		var Person=Backbone.Model.extend({
+			defaults:{
+				name:"Someone",
+				phone:null
+			},
+			initialize:function(){
+				console.log('Model initialiezed');
+			}
+		});
+
+		var Peoples=Backbone.Collection.extend({
+			model:Person
+		});
+
+
+		var PersonView=Backbone.View.extend({
+			tagName:'li',
+			template:_.template('Name : <%= name %>'),
+			initialize:function(){
+				this.render();
+			}
+			,
+			render:function(){
+				this.$el.html(this.template(this.model.toJSON()));
+				return this;
+			}
+		});
+
+		var PeoplesView = Backbone.View.extend({
+			el:$('body'),
+			initialize:function(){
+				console.log('Collection initialiezed');
+				this.render();
+			},
+			render:function(){
+				this.collection.forEach(this.addOne,this);
+			},
+			addOne:function(person){
+				var pv=new PersonView({model:person});
+				this.$el.append(pv.render().el);
+			}
+		});
+
+		var peoples=new Peoples({name:"Sarath"},{name:"Hello"});
+		var app=new PeoplesView({collection:peoples});
+		console.log(app.el);
+
+
 });
 </script>
 </html>
