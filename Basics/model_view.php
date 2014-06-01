@@ -2,9 +2,9 @@
 <html>
 <head>
 	<title>Model - View</title>
-<script type="text/javascript" src="../assets/js/jquery.js"></script>
-<script type="text/javascript" src="../assets/backbone/underscore.js"></script>
-<script type="text/javascript" src="../assets/backbone/backbone.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/underscore.js"></script>
+<script type="text/javascript" src="../js/backbone.js"></script>
 </head>
 <body>
 	<p id="model_view">
