@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Collection-View</title>
+<script type="text/javascript" src="../assets/js/jquery.js"></script>
+<script type="text/javascript" src="../assets/backbone/underscore.js"></script>
+<script type="text/javascript" src="../assets/backbone/backbone.js"></script>
+</head>
+<body>
+<h1>Collection View </h1>
+	<ul id="list">
+		
+	</ul>
+</body>
+<script type="text/javascript">
+	var Contact=Backbone.Model.extend({
+		defaults:{
+			name:"Someone",
+			email:'someone@in.com'
+		},
+		initialize:function(){
+			console.log("Model initialized");
+			
+		}
+	});
+	//View For Contact model
+
+	var ContactView=Backbone.View.extend({
+		tagName:'li',
+		template:_.template('<h1><%= name %> </h1> <%= email %>'),
+		initialize:function(){
+			console.log('View Initialized');
+			this.render();
+			this.model.on('change:email',this.render,this);//Adding change event 
+		},
+		render:function(){
+			this.$el.html(this.template(this.model.toJSON()));
+			$('#model_view').html(this.el);
+			return this;
+		}
+	});
+	//The collection
+	var ContactList=Backbone.Collection.extend({
+		model:Contact,
+		initialize:function(){
+			console.log("Collection initialized");
+		}
+	});
+
+	//Collection View
+
+	var  ListView=Backbone.View.extend({
+		el:$("#list"),
+		initialize:function(){
+			console.log('Collection View Initialized');
+			this.render();
+		},
+		render:function(){
+			this.collection.each(this.addOne,this);
+		},
+		addOne:function(contact){
+			var cv=new ContactView({model:contact});
+			this.$el.append(cv.render().el);
+		}
+	});
+
+	var contacts=new ContactList([{name:"Jeffrey",'email':'jeff@in.com'},{name:'Taylor',email:'taylor@in.com'}]);
+	var App=new ListView({collection:contacts});
+
+</script>
+</html>
