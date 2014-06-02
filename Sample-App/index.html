@@ -28,7 +28,7 @@ $(function(){
 
 
 		var PersonView=Backbone.View.extend({
-			tagName:'li',
+			tagName:'div',
 			template:_.template('Name : <%= name %>'),
 			initialize:function(){
 				this.render();
@@ -47,17 +47,19 @@ $(function(){
 				this.render();
 			},
 			render:function(){
-				this.collection.forEach(this.addOne,this);
+				this.collection.each(this.addOne,this);
 			},
 			addOne:function(person){
+				console.log('>>');
 				var pv=new PersonView({model:person});
 				this.$el.append(pv.render().el);
+				return this;
 			}
 		});
 
-		var peoples=new Peoples({name:"Sarath"},{name:"Hello"});
+		var peoples=new Peoples([{name:"Sarath"},{name:"Hello"}]);
 		var app=new PeoplesView({collection:peoples});
-		console.log(app.el);
+		
 
 
 });
