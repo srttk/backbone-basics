@@ -20,6 +20,7 @@ define(['jquery','underscore','Backbone','views/headerview','views/homeview','vi
     		var nf=new NFView();
     	},
     	start:function(){
+
     		Backbone.history.start();
     	}
     });
