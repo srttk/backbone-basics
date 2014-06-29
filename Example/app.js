@@ -8,7 +8,7 @@ define(['jquery','underscore','Backbone','views/headerview','views/homeview','vi
     	routes:{
     		'':'homePage',
     		'about':'aboutPage',
-    		//'*':'notfoundPage'
+    		'*actions':'notfoundPage'
     	},
     	homePage:function(){
     		var home=new HomeView();
@@ -16,7 +16,7 @@ define(['jquery','underscore','Backbone','views/headerview','views/homeview','vi
     	aboutPage:function(){
     		var about=new AboutView();
     	},
-    	notfoundPage:function(){
+    	notfoundPage:function(actions){
     		var nf=new NFView();
     	},
     	start:function(){
