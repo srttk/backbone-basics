@@ -1,4 +1,4 @@
-define(['jquery','underscore','Backbone','views/headerview','views/aboutview'],function($,_,Backbone,HeaderView,AboutView){
+define(['jquery','underscore','Backbone','views/headerview','views/homeview','views/aboutview'],function($,_,Backbone,HeaderView,HomeView,AboutView){
     var App=Backbone.Router.extend({
     	initialize:function(){
     		this.header=new HeaderView();
@@ -8,7 +8,7 @@ define(['jquery','underscore','Backbone','views/headerview','views/aboutview'],f
     		'about':'aboutPage'
     	},
     	homePage:function(){
-    		
+    		var home=new HomeView();
     	},
     	aboutPage:function(){
     		var about=new AboutView();
