@@ -1,3 +1,3 @@
 backbone-basics
 ===============
-Simple Contact Book Using Backbonejs. 
+Backbone Example files.
