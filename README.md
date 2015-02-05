@@ -1,4 +1,3 @@
 backbone-basics
 ===============
-
-BB App Development.
+Simple Contact Book Using Backbonejs. 
